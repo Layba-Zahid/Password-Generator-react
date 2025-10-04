@@ -92,9 +92,10 @@ if(password && !password.includes("please select")){
     if (/[0-9]/.test(password)) score++;
     if (/[^A-Za-z0-9]/.test(password)) score++;
 
-    if (score < 3) return { text: 'Weak',color:"red" };
-    if (score < 5) return { text: 'Medium', color :"blue" };
-    return { text: 'Strong', color:" green" };
+    if (password.length < 8) return { text: 'Weak', color: "red" };
+if (password.length < 12) return { text: 'Medium', color: "orange" };
+return { text: 'Strong', color: "green" };
+
   };
 
   const strength = getPasswordStrength();
@@ -161,12 +162,16 @@ if(password && !password.includes("please select")){
             onChange={() => setOptions({ ...options, symbol: !options.symbol })}
           /> Symbols
         </label>
-      </div>
 
-  {/* Strength Meter */}
+
+
+        {/* Strength Meter */}
   <div className="strength" style={{color: strength.color}}>
   Strength: {strength.text}
 </div>
+      </div>
+
+  
 
 
   {/* Generate Button */}
